@@ -1,5 +1,6 @@
 package com.bklee.colosseumcopy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,12 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        signUpBtn.setOnClickListener {
+            val myIntent = Intent(mContext, SignUpActivity::class.java)
+            startActivity(myIntent)
+        }
+
         autoLoginCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
             ContextUtil.setAutoLogin(mContext, isChecked)
         }
