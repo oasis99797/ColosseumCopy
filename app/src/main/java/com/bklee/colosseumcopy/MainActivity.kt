@@ -51,14 +51,18 @@ class MainActivity : BaseActivity() {
             override fun onResponse(json: JSONObject) {
                 Log.d("메인화면응답", json.toString())
 
+                val code = json.getInt("code")
+
                 if( code == 200 ) {
                     val data = json.getJSONObject("data")
                     val user = data.getJSONObject("user")
                     val topic = data.getJSONObject("topic")
 
                     runOnUiThread {
-                        myNickNameTxt.text = user.getString("nice_name")
+                        myNickNameTxt.text = user.getString("nick_name")
                         thisWeekBattleTopicTxt.text = topic.getString("title")
+
+                        Glide.with(mContext).load(topic.getString("img_url")).into(topicImg)
                     }
                 }
             }

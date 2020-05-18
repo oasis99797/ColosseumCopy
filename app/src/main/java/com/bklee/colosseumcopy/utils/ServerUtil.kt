@@ -86,7 +86,7 @@ class ServerUtil {
             })
         }
 
-        fun getRequestMainInfo(context: Context, token: JsonResponseHandler, handler: JsonResponseHandler?) {
+        fun getRequestMainInfo(context: Context, handler: JsonResponseHandler?) {
 
             val client = OkHttpClient()
             val urlBuilder = "${BASE_URL}/main_info".toHttpUrlOrNull()!!.newBuilder()
@@ -99,7 +99,7 @@ class ServerUtil {
 
             val request = Request.Builder()
                 .url(urlStr)
-                .header("X-Http-Token", token)
+                .header("X-Http-Token", ContextUtil.getUserToken(context))
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
