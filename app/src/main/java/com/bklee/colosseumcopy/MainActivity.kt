@@ -1,13 +1,14 @@
 package com.bklee.colosseumcopy
 
 import android.app.Activity
-import android.content.ActivityNotFoundException
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import com.bklee.colosseumcopy.utils.ServerUtil
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
 
@@ -41,6 +42,28 @@ class MainActivity : BaseActivity() {
                 Glide.with(mContext).load(data?.data).into(myProfileImg)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        ServerUtil.getRequestMainInfo(mContext, object : ServerUtil.JsonResponseHandler {
+            override fun onResponse(json: JSONObject) {
+                Log.d("메인화면응답", json.toString())
+
+                if( code == 200 ) {
+                    val data = json.getJSONObject("data")
+                    val user = data.getJSONObject("user")
+                    val topic = data.getJSONObject("topic")
+
+                    runOnUiThread {
+                        myNickNameTxt.text = user.getString("nice_name")
+                        thisWeekBattleTopicTxt.text = topic.getString("title")
+                    }
+                }
+            }
+
+        })
     }
 
 }
