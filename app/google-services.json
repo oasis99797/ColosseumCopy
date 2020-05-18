@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "539869580928",
+    "firebase_url": "https://colosseumcopy.firebaseio.com",
+    "project_id": "colosseumcopy",
+    "storage_bucket": "colosseumcopy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539869580928:android:da70334019afc0996e6065",
+        "android_client_info": {
+          "package_name": "com.bklee.colosseumcopy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539869580928-kv3iqdplbbtlkmaqtv4cp6o4fqplp29g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPme7amahfpVqBLmclJ12kqXpHWRsApnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539869580928-kv3iqdplbbtlkmaqtv4cp6o4fqplp29g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
